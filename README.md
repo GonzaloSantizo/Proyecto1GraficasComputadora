@@ -1,2 +1,2 @@
-# Lab2GraficasComputadora
-Laboratorio 2 graficas por computadora, shaders
+# Proyecto 1 Graficas por computadora
+Proyecto 1 Graficas por Computadora, Rasterizer
