@@ -59,6 +59,8 @@ class Renderer(object):
 
         self.glColor(1,1,1)
 
+        self.background = None
+
         self.objects = []
 
         self.vertexShader = None
@@ -132,6 +134,29 @@ class Renderer(object):
                                           [0,n/t,0,0],
                                           [0,0,-(f+n)/(f-n),-2*f*n/(f-n)],
                                           [0,0,-1,0]])
+        
+
+
+    
+    def glBackgroundTexture(self, filename):
+        self.background = Texture(filename)
+
+    def glClearBackground(self):
+        self.glClear()
+
+        if self.background:
+            for x in range(self.vpX, self.vpX + self.vpWidth + 1):
+                for y in range(self.vpY, self.vpY + self.vpHeight + 1):
+
+
+                    u = (x - self.vpX) / self.vpWidth
+                    v = (y - self.vpY) / self.vpHeight
+                    
+                    texColor = self.background.getColor(u, v)
+
+                    if texColor:
+                        self.glPoint(x, y, color(texColor[0], texColor[1], texColor[2],))
+
 
 
     def glClearColor(self,r,g,b):

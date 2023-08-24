@@ -6,6 +6,9 @@ height = 1000
 
 rend = Renderer(width,height)
 
+rend.glBackgroundTexture("textures/pic1.bmp")
+rend.glClearBackground()
+
 rend.vertexShader = shaders.vertexShader
 rend.fragmentShader = shaders.fragmentShader
 #rend.glCamMatrix(translate=(1,2,0))
