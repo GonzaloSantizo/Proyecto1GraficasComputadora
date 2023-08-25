@@ -17,16 +17,16 @@ def vertexShader(vertex,**kwargs):
     return vt
 
 
-# Original
-# def fragmentShader(**kwargs):
-#     textCoords = kwargs["textCoords"]
-#     texture = kwargs["texture"]
+#Original
+def fragmentShader(**kwargs):
+    textCoords = kwargs["textCoords"]
+    texture = kwargs["texture"]
 
-#     if texture !=None:
-#         color = texture.getColor(textCoords[0],textCoords[1])
-#     else:
-#         color = (1,1,1)
-#     return color
+    if texture !=None:
+        color = texture.getColor(textCoords[0],textCoords[1])
+    else:
+        color = (1,1,1)
+    return color
 
 
 #Black and White Shader
@@ -71,19 +71,19 @@ def vertexShader(vertex,**kwargs):
 #     return invertedColor
 
 
-def fragmentShader(**kwargs):
-    textCoords = kwargs["textCoords"]
-    texture = kwargs["texture"]
+# def fragmentShader(**kwargs):
+#     textCoords = kwargs["textCoords"]
+#     texture = kwargs["texture"]
 
-    if texture != None:
-        color = texture.getColor(textCoords[0], textCoords[1])
-    else:
-        color = (1, 1, 1)
+#     if texture != None:
+#         color = texture.getColor(textCoords[0], textCoords[1])
+#     else:
+#         color = (1, 1, 1)
     
-    grayscaleValue = 0.2989 * color[0] + 0.5870 * color[1] + 0.1140 * color[2]
-    grayColor = (grayscaleValue, grayscaleValue, grayscaleValue)
+#     grayscaleValue = 0.2989 * color[0] + 0.5870 * color[1] + 0.1140 * color[2]
+#     grayColor = (grayscaleValue, grayscaleValue, grayscaleValue)
     
-    return grayColor
+#     return grayColor
 
 
 
