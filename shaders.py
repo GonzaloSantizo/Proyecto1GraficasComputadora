@@ -18,41 +18,41 @@ def vertexShader(vertex,**kwargs):
 
 
 #Original
-def fragmentShader(**kwargs):
-    textCoords = kwargs["textCoords"]
-    texture = kwargs["texture"]
-
-    if texture !=None:
-        color = texture.getColor(textCoords[0],textCoords[1])
-    else:
-        color = (1,1,1)
-    return color
-
-
-#Black and White Shader
 # def fragmentShader(**kwargs):
 #     textCoords = kwargs["textCoords"]
 #     texture = kwargs["texture"]
-#     edgeThreshold = 0.1  # Umbral para detectar bordes
 
-#     if texture != None:
-#         color = texture.getColor(textCoords[0], textCoords[1])
+#     if texture !=None:
+#         color = texture.getColor(textCoords[0],textCoords[1])
 #     else:
-#         color = (1, 1, 1)
-    
-#     # Detectar bordes usando diferencias en los canales de color
-#     grayscale = 0.2989 * color[0] + 0.5870 * color[1] + 0.1140 * color[2]
-#     edgeColor = (0, 0, 0)
-#     if abs(color[0] - grayscale) > edgeThreshold or \
-#        abs(color[1] - grayscale) > edgeThreshold or \
-#        abs(color[2] - grayscale) > edgeThreshold:
-#         color = edgeColor
-#     else:
-#         # Reducir el número de niveles de color para lograr el aspecto de caricatura
-#         numLevels = 6
-#         color = tuple(round(c * (numLevels - 1)) / (numLevels - 1) for c in color)
-
+#         color = (1,1,1)
 #     return color
+
+
+#Black and White Shader
+def fragmentShader(**kwargs):
+    textCoords = kwargs["textCoords"]
+    texture = kwargs["texture"]
+    edgeThreshold = 0.1  # Umbral para detectar bordes
+
+    if texture != None:
+        color = texture.getColor(textCoords[0], textCoords[1])
+    else:
+        color = (1, 1, 1)
+    
+    # Detectar bordes usando diferencias en los canales de color
+    grayscale = 0.2989 * color[0] + 0.5870 * color[1] + 0.1140 * color[2]
+    edgeColor = (0, 0, 0)
+    if abs(color[0] - grayscale) > edgeThreshold or \
+       abs(color[1] - grayscale) > edgeThreshold or \
+       abs(color[2] - grayscale) > edgeThreshold:
+        color = edgeColor
+    else:
+        # Reducir el número de niveles de color para lograr el aspecto de caricatura
+        numLevels = 6
+        color = tuple(round(c * (numLevels - 1)) / (numLevels - 1) for c in color)
+
+    return color
 
 
 

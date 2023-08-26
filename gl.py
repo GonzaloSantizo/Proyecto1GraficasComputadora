@@ -47,6 +47,7 @@ class Model(object):
         self.scale = scale
 
     def LoadTexture(self,textureName):
+        
         self.texture = Texture(textureName)
 
 class Renderer(object):
@@ -394,12 +395,13 @@ class Renderer(object):
                     textCoords.append(vt0)
                     textCoords.append(vt2)
                     textCoords.append(vt3)
-        primitives = self.glPrimitiveAssembly(transformedVerts,textCoords)
 
-  
-        for prim in primitives:
-            if self.primitiveType==TRIANGLES:
-                self.glTriangle_bc(prim[0],prim[1],prim[2],prim[3],prim[4],prim[5])
+            primitives = self.glPrimitiveAssembly(transformedVerts,textCoords)
+
+    
+            for prim in primitives:
+                if self.primitiveType==TRIANGLES:
+                    self.glTriangle_bc(prim[0],prim[1],prim[2],prim[3],prim[4],prim[5])
 
     def glFinish(self,filename):
         with open(filename,"wb") as file:
